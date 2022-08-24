@@ -1,0 +1,90 @@
+* {
+    color: #fff;
+    overflow: hidden;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 16px; /* 1rem = 10px */
+    margin: 0;
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculadora {
+    width: 30rem;
+    height: 60rem;
+    display: grid;
+    gap: .2rem;
+    padding: .2rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 20rem repeat(5, 1fr);
+    background-color: #1D2122;
+    /*box-shadow: 15px 10px 0px 5px #00000033;*/
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    background-color: #3B3B3B;
+    border: none;
+}
+
+button.numero {
+    font-size: 2rem;
+}
+
+
+button.operador {
+    background-color: #323232;
+    font-size: 2rem;
+}
+
+button.igual {
+    background-color: #0793FF;
+}
+
+button:active {
+    background-color: #323232;
+}
+
+button.operador:active {
+    background-color: #3B3B3B;
+}
+
+button:focus {
+    outline: none;
+}
+
+.col-2 {
+    grid-column: span 2;
+}
+
+.display {
+    grid-column: 1 / -1;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: space-between;
+    word-break: break-all;
+}
+
+#valor-actual {
+    font-size: 6rem;
+}
+
+#valor-anterior {
+    font-size: 3rem;
+}
