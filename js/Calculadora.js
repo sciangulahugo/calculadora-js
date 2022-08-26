@@ -9,7 +9,7 @@ class Calculadora {
         return operandoA * operandoB;
     }
     dividir(operandoA, operandoB) {
-        if (operandoB == 0) return 'No dividir por 0';
+        if (operandoB == 0) return 'Error';
         return operandoA / operandoB;
     }
 }
