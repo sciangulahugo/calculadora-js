@@ -7,6 +7,7 @@ class Display {
         this.valorActual = '';
         this.valorAnterior = '';
         this.tipoOperacion = undefined;
+        this.tipoOperacionSucecivo = undefined;
         this.calculadora = new Calculadora();
         this.signos = {
             sumar: '+',
@@ -16,7 +17,8 @@ class Display {
         };
     }
     borrar() {
-        
+        this.valorActual = this.valorActual.toString().slice(0, -1);
+        this.imprimirActual(this.valorActual);
     }
     borrarTodo() {
         this.valorActual = '';
@@ -55,6 +57,15 @@ class Display {
             this.imprimirAnterior(this.operandoA, this.signos['restar'], '')
             console.log('ok2'); /*//////////////*/
         } 
+        if(signo != 'igual' && this.operandoA != '' && this.operandoB != '') {
+            console.log(this.tipoOperacionSucecivo);
+            this.imprimirAnterior(this.calculadora[this.tipoOperacionSucecivo](parseFloat(this.operandoA), parseFloat(this.operandoB)), this.signos[this.tipoOperacion], '');
+            this.imprimirActual(this.calculadora[this.tipoOperacionSucecivo](parseFloat(this.operandoA), parseFloat(this.operandoB)));
+            console.log('///////////////');
+            this.operandoA = this.calculadora[this.tipoOperacionSucecivo](parseFloat(this.operandoA), parseFloat(this.operandoB));
+            this.operandoB = '';
+            //return;
+        }
         //if(signo !== 'igual' && )
         //en caso de querer realizar una operacion.
         if(signo === 'igual') {
@@ -83,6 +94,8 @@ class Display {
             //en caso de que de empezar a cargar los valores
             if(this.operandoA !== '' && this.operandoB === '') {
                 console.log('ok5'); /*//////////////*/
+                //aca guardamos el tipo de operacion en caso de que lo cambie.
+                this.tipoOperacionSucecivo = this.tipoOperacion;
                 this.imprimirAnterior(this.operandoA, this.signos[this.tipoOperacion],'');
             } else if(this.operandoA !== '' && this.operandoB != '') {
                 console.log('ok6'); /*//////////////*/
@@ -96,6 +109,7 @@ class Display {
         //imprimimos primero los valores del operando A
         this.displayValorActual.textContent = `${valor || ''}`;
         this.valorActual = valor;
+        console.log(this.valorActual);
     }
     imprimirAnterior(operandoA, operacion, operandoB) {
         this.displayValorAnterior.textContent = `${operandoA || ''} ${operacion || ''} ${operandoB || ''} ${this.operandoA != '' && this.operandoB != '' ? ' = ' : ''}`
